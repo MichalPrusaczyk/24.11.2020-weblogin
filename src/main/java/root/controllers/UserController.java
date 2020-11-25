@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.annotation.SessionScope;
 import root.database.IUserRepository;
 import root.model.User;
+import root.model.view.ChangePassData;
 import root.session.SessionObject;
 
 import javax.annotation.Resource;
@@ -22,32 +23,68 @@ public class UserController {
     @Resource
     SessionObject sessionObject;
 
-    @RequestMapping(value ="/login", method = RequestMethod.GET)
-    public String loginForm(Model model){
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginForm(Model model) {
         model.addAttribute("userModel", new User());
         return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String authentication(@ModelAttribute User user){
+    public String authentication(@ModelAttribute User user) {
 
         this.sessionObject.setUser(this.userRepository.authenticate(user));
 
-        if(this.sessionObject.getUser() != null){
+        if (this.sessionObject.getUser() != null) {
             return "redirect:/home";
-        }else{
+        } else {
             return "redirect:/login";
         }
     }
-    @RequestMapping(value="/logout",method = RequestMethod.GET)
-    public String logout(){
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout() {
         this.sessionObject.setUser(null);
         return "redirect:/login";
     }
 
-    @RequestMapping (value ="/edit", method = RequestMethod.GET)
-    public String edit(Model model){
-        model.addAttribute("user", this.sessionObject.getUser());
-        return "edit";
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String edit(Model model) {
+        if (this.sessionObject.isLogged()) {
+            model.addAttribute("user", this.sessionObject.getUser());
+            model.addAttribute("passModel",new ChangePassData());
+            return "edit";
+        } else {
+            return "redirect:/login";
+        }
+    }
+    @RequestMapping(value = "/changeData", method = RequestMethod.POST)
+    public String changeData(@ModelAttribute User user){
+        user.setLogin(this.sessionObject.getUser().getLogin());
+        User updatedUser = this.userRepository.updateUserData(user);
+        this.sessionObject.setUser(updatedUser);
+        return "redirect:/edit";
+    }
+
+    @RequestMapping(value = "/changePass", method = RequestMethod.POST)
+    public String changePass(@ModelAttribute ChangePassData changePassData){
+
+        if(!changePassData.getNewPass().equals(changePassData.getRepeatedNewPass())){
+            //TODO something to do, bad password
+        }
+        User user = new User();
+        user.setPass(changePassData.getPass());
+        user.setLogin(this.sessionObject.getUser().getLogin());
+
+        User authenticatedUser = this.userRepository.authenticate(user);
+
+        if(authenticatedUser == null){
+            //TODO something to do, bad password
+        }
+
+        user.setPass(changePassData.getNewPass());
+        User updatedUser = this.userRepository.updateUserPass(user);
+        this.sessionObject.setUser(updatedUser);
+
+        return "redirect:/edit";
     }
 }

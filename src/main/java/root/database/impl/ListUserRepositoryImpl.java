@@ -28,4 +28,30 @@ public class ListUserRepositoryImpl implements IUserRepository {
         }
         return null;
     }
+
+    @Override
+    public User updateUserData(User user) {
+        for(User userFromDB : this.userList){
+            if(userFromDB.getLogin().equals(user.getLogin())){
+                userFromDB.setName(user.getName());
+                userFromDB.setSurname(user.getSurname());
+                return userFromDB;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public User updateUserPass(User user) {
+        for(User userFromDB : this.userList){
+            if(userFromDB.getLogin().equals(user.getLogin())){
+                userFromDB.setPass(user.getPass());
+                return userFromDB;
+            }
+        }
+
+
+        return null;
+    }
 }

@@ -1,0 +1,49 @@
+#edit-data-form {
+    width: 500px;
+    margin: 50px auto;
+    padding: 0;
+}
+
+#edit-data-form input {
+    display: block;
+}
+
+.text-input {
+    width: 100%;
+    margin: 15px 0;
+    font-size: 26px;
+    text-align: center;
+}
+
+.form-submit {
+    color: black;
+    width: 30%;
+    margin: 15px auto;
+    font-size: 26px;
+    background: white;
+    border: 2px solid red;
+    border-radius: 10px;
+    transition: color 1s, border 1s;
+}
+
+.form-submit:hover {
+    cursor: pointer;
+    color: red;
+    border: 2px solid black;
+}
+
+#change-pass-form {
+    width: 500px;
+    margin: 50px auto;
+    padding: 0;
+}
+
+#change-pass-form input {
+    display: block;
+}
+
+#info {
+    font-size: 26px;
+    color: red;
+    text-align: center;
+}

@@ -24,7 +24,7 @@ public class CommonController {
     SessionObject sessionObject;
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String main(Model model) {
+    public String main(Model model, @RequestParam(defaultValue = "none") String category) {
         model.addAttribute("products", this.productRepository.getAllProducts());
         model.addAttribute("user",this.sessionObject.getUser());
         if(sessionObject.isLogged()){

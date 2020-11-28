@@ -26,7 +26,9 @@
 <form id="edit-data-form" method="post" action="/changeData" name="dataForm" onsubmit="return validateData()">
     <input type="text" placeholder="name" class="text-input" th:field="*{user.name}" name="name">
     <input type="text" placeholder="surname" class="text-input" th:field="*{user.surname}"name="surname">
-    <input type="submit" value="OK" class="form-submit">
+    <input type="submit" value="OK" class="form-submit btn">
+
+
 </form>
 
 <form id="change-pass-form" method="post" action="/changePass" name="passFrom" onsubmit="return validatePass()">
@@ -34,7 +36,7 @@
     <input type="password" placeholder="password" class="text-input" th:field="*{passModel.pass}" id="currentPass" >
     <input type="password" placeholder="new password" class="text-input" th:field="*{passModel.newPass}" id="newPass">
     <input type="password" placeholder="repeat new password" class="text-input" th:field="*{passModel.repeatedNewPass}" id="newPass2">
-    <input type="submit" value="OK" class="form-submit">
+    <input type="submit" value="OK" class="form-submit btn">
 </form>
 </body>
 </html>

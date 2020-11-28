@@ -28,8 +28,7 @@
 
 .form-submit:hover {
     cursor: pointer;
-    color: red;
-    border: 2px solid black;
+    border: 2px solid white;
 }
 
 #change-pass-form {

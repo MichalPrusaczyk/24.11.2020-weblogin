@@ -9,68 +9,43 @@ import java.util.List;
 @Component
 public class ListProductRepositoryImpl implements IProductRepository {
 
-    private final List<Product> product = new ArrayList<>();
+    private final List<Product> products = new ArrayList<>();
 
-    {
-        this.product.add(new Product("Aluminium", "round", 100, "fi10", Product.Category.BUTTON1));
-        this.product.add(new Product("Steel", "round", 100, "fi10", Product.Category.BUTTON2));
-    }
+//    {
+//        this.product.add(new Product("Aluminium", "round", 100, "fi10",200.00, Product.Category.BUTTON1,"123123123"));
+//        this.product.add(new Product("Steel", "round", 100, "fi10",100.00, Product.Category.BUTTON2,"456456456"));
+//    }
 
 
     @Override
     public List<Product> getAllProducts() {
-        return this.product;
+        return this.products;
     }
 
     @Override
-    public List<Product> getButton1() {
-        List<Product> button1Products = new ArrayList<>();
-
-        for (Product product : this.product) {
-            if(product.getCategory() == Product.Category.BUTTON1){
-            button1Products.add(product);
-        }
+    public List<Product> getProductsByCategory(Product.Category category) {
+        //TODO Do zrobienia
+        return null;
     }
 
-    return button1Products;
-}
-
     @Override
-    public List<Product> getButton2() {
-        List<Product> button2Products = new ArrayList<>();
-
-        for (Product product : this.product) {
-            if(product.getCategory() == Product.Category.BUTTON2){
-                button2Products.add(product);
+    public Product getProductByEAN(String ean) {
+        for(Product product : this.products) {
+            if(product.getEan().equals(ean)) {
+                return product;
             }
         }
 
-        return button2Products;
+        return null;
     }
 
     @Override
-    public List<Product> getButton4() {
-        List<Product> button2Products = new ArrayList<>();
-
-        for (Product product : this.product) {
-            if(product.getCategory() == Product.Category.BUTTON4){
-                button2Products.add(product);
-            }
-        }
-
-        return button2Products;
+    public void addProduct(Product product) {
+        this.products.add(product);
     }
 
     @Override
-    public List<Product> getProductsByFilter(String filter) {
-        List<Product> filteredProducts = new ArrayList<>();
-
-        for(Product product : this.product){
-            if(product.getShape().toUpperCase().contains(filter.toUpperCase())){
-                filteredProducts.add(product);
-            }
-        }
-
-        return filteredProducts;
+    public void updateProduct(Product product) {
+        //TODO do zrobienia
     }
 }

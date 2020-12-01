@@ -7,12 +7,16 @@ import root.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+import static root.model.User.Role.ADMIN;
+import static root.model.User.Role.USER;
+
+
 public class ListUserRepositoryImpl implements IUserRepository {
     private final List<User> userList = new ArrayList<>();
 
     public ListUserRepositoryImpl() {
-        this.userList.add(new User("Michal","Prusaczyk","admin", "admin"));
+//        this.userList.add(new User("Michal","Prusaczyk","admin", "admin",ADMIN));
+//        this.userList.add(new User("Adam","Prusaczyk","admin", "admin",USER));
     }
 
     @Override
@@ -53,5 +57,20 @@ public class ListUserRepositoryImpl implements IUserRepository {
 
 
         return null;
+    }
+    @Override
+    public boolean checkIfLoginExist(String login) {
+        for(User userFromDB : this.userList) {
+            if(userFromDB.getLogin().equals(login)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public void addUser(User user) {
+        this.userList.add(user);
     }
 }

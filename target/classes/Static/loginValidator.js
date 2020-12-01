@@ -2,7 +2,7 @@ function validate(){
     var login = document.forms["loginForm"]["login"].value;
     var pass = document.forms["loginForm"]["pass"].value;
 
-    var regex = new RegExp(/^.{3}.*/);
+    var regex = new RegExp(/.{3}.*/);
 
         var flag = true;
 

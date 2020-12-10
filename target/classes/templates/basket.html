@@ -12,22 +12,22 @@
 
 <div id="content">
     <div class="basket-row">
-        <div class="title">Tytuł</div>
-        <div class="pieces">Ilość</div>
-        <div class="price1">Cena za sztukę</div>
-        <div class="price2">Cena</div>
+        <div class="name">Name</div>
+        <div class="length">Length</div>
+        <div class="price1">Price</div>
+        <div class="price2">Price2</div>
     </div>
-    <th:block th:each="book : ${books}">
-        <div class="basket-row book">
-            <div class="title" th:text="${book.title}"></div>
-            <div class="pieces" th:text="${book.pieces}"></div>
-            <div class="price1" th:text="${book.price}"></div>
-            <div class="price2" th:text="${book.price * book.pieces}"></div>
+    <th:block th:each="product : ${products}">
+        <div class="basket-row product">
+            <div class="name" th:text="${product.name}"></div>
+            <div class="length" th:text="${product.length}"></div>
+            <div class="price1" th:text="${product.price}"></div>
+            <div class="price2" th:text="${product.price * product.length}"></div>
         </div>
     </th:block>
     <div class="basket-row">
-        <div class="title"></div>
-        <div class="pieces"></div>
+        <div class="name"></div>
+        <div class="length"></div>
         <div class="price1">Suma</div>
         <div class="price2" th:text="${bill}"></div>
     </div>

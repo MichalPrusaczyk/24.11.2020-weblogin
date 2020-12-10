@@ -22,11 +22,11 @@
 </div>
 <form method="post" id="register-form">
     <div th:if="${info != null}" th:text="${info}" id="info"></div>
-    <input type="text" placeholder="Name" class="text-input" th:field="${book.name}" disabled>
-    <input type="text" placeholder="Shape" class="text-input" th:field="${book.shape}">
-    <input type="text" placeholder="Length" class="text-input" th:field="${book.length}">
-    <input type="text" placeholder="EAN" class="text-input" th:field="${book.ean}" disabled>
-    <input type="text" placeholder="Price" class="text-input" th:field="${book.price}">
+    <input type="text" placeholder="Name" class="text-input" th:field="${product.name}" disabled>
+    <input type="text" placeholder="Shape" class="text-input" th:field="${product.shape}">
+    <input type="text" placeholder="Length" class="text-input" th:field="${product.length}">
+    <input type="text" placeholder="EAN" class="text-input" th:field="${product.ean}" disabled>
+    <input type="text" placeholder="Price" class="text-input" th:field="${product.price}">
     <select th:field="${product.category}" class="text-input">
         <option value="BUTTON1">Aluminium</option>
         <option value="BUTTON2">Steel</option>

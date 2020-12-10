@@ -3,7 +3,7 @@
     text-align: center;
 }
 
-.book {
+.product {
     border-top: 1px solid black;
 }
 
@@ -13,12 +13,12 @@
     margin: 10px;
 }
 
-.title {
+.name {
     width: 45%;
     border-right: 1px solid black;
 }
 
-.pieces {
+.length {
     width: 10%;
     border-right: 1px solid black;
 }

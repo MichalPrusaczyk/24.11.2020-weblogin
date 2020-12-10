@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Super księgi</title>
+    <link rel="stylesheet" href="/basket.css">
+    <link rel="stylesheet" href="/common-controls.css">
+</head>
+<body>
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
+
+<div id="content">
+    <div class="basket-row">
+        <div class="title">Tytuł</div>
+        <div class="pieces">Ilość</div>
+        <div class="price1">Cena za sztukę</div>
+        <div class="price2">Cena</div>
+    </div>
+    <th:block th:each="book : ${books}">
+        <div class="basket-row book">
+            <div class="title" th:text="${book.title}"></div>
+            <div class="pieces" th:text="${book.pieces}"></div>
+            <div class="price1" th:text="${book.price}"></div>
+            <div class="price2" th:text="${book.price * book.pieces}"></div>
+        </div>
+    </th:block>
+    <div class="basket-row">
+        <div class="title"></div>
+        <div class="pieces"></div>
+        <div class="price1">Suma</div>
+        <div class="price2" th:text="${bill}"></div>
+    </div>
+</div>
+</body>
+</html>

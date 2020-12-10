@@ -1,0 +1,33 @@
+#content {
+    margin: 50px 200px 15px 200px;
+    text-align: center;
+}
+
+.book {
+    border-top: 1px solid black;
+}
+
+.basket-row div {
+    display: inline-block;
+    font-size: 26px;
+    margin: 10px;
+}
+
+.title {
+    width: 45%;
+    border-right: 1px solid black;
+}
+
+.pieces {
+    width: 10%;
+    border-right: 1px solid black;
+}
+
+.price1 {
+    width: 15%;
+    border-right: 1px solid black;
+}
+
+.price2 {
+    width: 15%;
+}

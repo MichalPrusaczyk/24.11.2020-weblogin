@@ -1,6 +1,7 @@
 package root.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import root.dao.IProductDAO;
 import root.model.Product;
 
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class ProductDAOImpl implements IProductDAO {
 
     @Autowired
@@ -76,7 +78,7 @@ public class ProductDAOImpl implements IProductDAO {
     @Override
     public Product getProductById(int id) {
         try {
-            String sql = "SELECT * FROM tbook WHERE id = ?";
+            String sql = "SELECT * FROM tproduct WHERE id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();

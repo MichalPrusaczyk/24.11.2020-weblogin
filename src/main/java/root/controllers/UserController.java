@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.web.bind.annotation.RequestParam;
 import root.database.IUserRepository;
 import root.model.User;
 import root.model.view.ChangePassData;
@@ -20,9 +20,6 @@ import java.util.regex.Pattern;
 
 @Controller
 public class UserController {
-
-    @Autowired
-    IUserRepository userRepository;
 
     @Resource
     SessionObject sessionObject;
@@ -45,7 +42,7 @@ public class UserController {
         Matcher passMatcher = regexPattern.matcher(user.getPass());
 
         if(!loginMatcher.matches() || !passMatcher.matches()) {
-            this.sessionObject.setInfo("Invalid value (regexp) !!");
+            this.sessionObject.setInfo("Nieprawidłowe dane (regexp) !!");
             return "redirect:/login";
         }
 
@@ -54,7 +51,7 @@ public class UserController {
         if(this.sessionObject.getUser() != null) {
             return "redirect:/main";
         } else {
-            this.sessionObject.setInfo("Invalid value");
+            this.sessionObject.setInfo("Nieprawidłowe dane !!");
             return "redirect:/login";
         }
     }
@@ -85,7 +82,7 @@ public class UserController {
         Matcher surnameMatcher = regexPattern.matcher(user.getSurname());
 
         if(!nameMatcher.matches() || !surnameMatcher.matches()) {
-            this.sessionObject.setInfo("Invalid value");
+            this.sessionObject.setInfo("Nieprawidłowe dane !!");
             return "redirect:/edit";
         }
 
@@ -101,12 +98,12 @@ public class UserController {
         Matcher newPassMatcher = regexPattern.matcher(changePassData.getNewPass());
 
         if(!changePassData.getNewPass().equals(changePassData.getRepeatedNewPass())) {
-            this.sessionObject.setInfo("Incorrect repeated password");
+            this.sessionObject.setInfo("Nieprawidłowo powtórzone hasło !!");
             return "redirect:/edit";
         }
 
         if(!currentPassMatcher.matches() || !newPassMatcher.matches()) {
-            this.sessionObject.setInfo("Invalid value");
+            this.sessionObject.setInfo("Nieprawidłowe hasło !!");
             return "redirect:/edit";
         }
 
@@ -114,7 +111,7 @@ public class UserController {
         if(result != null) {
             this.sessionObject.setUser(result);
         } else {
-            this.sessionObject.setInfo("Password change failed");
+            this.sessionObject.setInfo("Zmiana hasła nieudana !!");
         }
 
         return "redirect:/edit";
@@ -130,18 +127,18 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String processRegister(@ModelAttribute UserRegistrationData userRegistrationData) {
         if(!userRegistrationData.getPass().equals(userRegistrationData.getRepeatedPass())) {
-            this.sessionObject.setInfo("Incorrect repeated password");
+            this.sessionObject.setInfo("Nieprawidłowo powtórzone hasła !!");
             return "redirect:/register";
         }
 
         boolean checkResult = this.userService.registerUser(userRegistrationData);
 
         if(!checkResult) {
-            this.sessionObject.setInfo("login used by another user");
+            this.sessionObject.setInfo("Login zajęty !!");
             return "redirect:/register";
         }
 
-        this.sessionObject.setInfo("Register complete");
+        this.sessionObject.setInfo("Rejestracja udana !!");
         return "redirect:/login";
     }
 }

@@ -2,41 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Warehouse</title>
-    <link rel="stylesheet" href="/common-controls.css">
+    <title>Metal Profiles</title>
     <link rel="stylesheet" href="/edit.css">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/utilities.css">
+    <link rel="stylesheet" href="/common-controls.css">
+    <script src="editProfileValidator.js"></script>
 </head>
 <body>
-
-<div class="navbar">
-    <div class="container flex">
-        <h1 class="logo">Edit data.</h1>
-        <nav>
-            <ul>
-                <li><a href="/home">Home</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
-</div>
-
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
 <form id="edit-data-form" method="post" action="/changeData" name="dataForm" onsubmit="return validateData()">
-    <input type="text" placeholder="name" class="text-input" th:field="*{user.name}" name="name">
-    <input type="text" placeholder="surname" class="text-input" th:field="*{user.surname}"name="surname">
-    <input type="submit" value="OK" class="form-submit btn">
-
-
+    <input type="text" placeholder="Name" class="text-input" th:field="*{user.name}" name="name">
+    <input type="text" placeholder="Surname" class="text-input" th:field="*{user.surname}" name="surname">
+    <input type="submit" value="OK" class="form-submit">
 </form>
-
-<form id="change-pass-form" method="post" action="/changePass" name="passFrom" onsubmit="return validatePass()">
+<form id="change-pass-form" method="post" action="/changePass" name="passForm" onsubmit="return validatePass()">
     <div th:if="${info != null}" th:text="${info}" id="info"></div>
-    <input type="password" placeholder="password" class="text-input" th:field="*{passModel.pass}" id="currentPass" >
+    <input type="password" placeholder="password" class="text-input" th:field="*{passModel.pass}" id="currentPass">
     <input type="password" placeholder="new password" class="text-input" th:field="*{passModel.newPass}" id="newPass">
     <input type="password" placeholder="repeat new password" class="text-input" th:field="*{passModel.repeatedNewPass}" id="newPass2">
-    <input type="submit" value="OK" class="form-submit btn">
+    <input type="submit" value="OK" class="form-submit">
 </form>
 </body>
 </html>

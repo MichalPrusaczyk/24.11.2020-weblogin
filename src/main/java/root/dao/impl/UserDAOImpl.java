@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@Repository
 public class UserDAOImpl implements IUserDAO {
 
     @Autowired

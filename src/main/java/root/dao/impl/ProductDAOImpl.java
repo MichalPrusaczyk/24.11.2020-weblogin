@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
 public class ProductDAOImpl implements IProductDAO {
 
     @Autowired

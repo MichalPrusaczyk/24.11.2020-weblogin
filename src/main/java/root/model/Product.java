@@ -1,28 +1,40 @@
 package root.model;
 
-public class Product {
+import javax.persistence.*;
+import java.util.List;
 
+@Entity(name = "tproduct")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String shape;
-    private double length;
-    private String size;
-    private double price;
+    private int length;
     private String ean;
+    private double price;
+    @Enumerated(EnumType.STRING)
     private Category category;
 
-    public Product(int id, String name, String shape, double length, String size, double price, Category category,String ean) {
+    public Product(int id, String name, String shape, int length, String ean, double price, Category category) {
         this.id = id;
         this.name = name;
         this.shape = shape;
         this.length = length;
-        this.size = size;
+        this.ean = ean;
         this.price = price;
         this.category = category;
-        this.ean = ean;
     }
 
     public Product() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -41,28 +53,12 @@ public class Product {
         this.shape = shape;
     }
 
-    public double getLength() {
+    public int getLength() {
         return length;
     }
 
-    public void setLength(double length) {
+    public void setLength(int length) {
         this.length = length;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public String getEan() {
@@ -73,6 +69,14 @@ public class Product {
         this.ean = ean;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -81,21 +85,33 @@ public class Product {
         this.category = category;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public enum Category{
+    public enum Category {
         BUTTON1,
-        BUTTON2,
+        BUTTON2
     }
+
     @Override
     public Object clone() {
-        return new Product(this.id, this.name, this.shape, this.price, this.size, this.length, this.category,this.ean);
+        return new Product(this.id, this.name, this.shape, this.length, this.ean, this.price, this.category);
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder().append("Product{")
+                .append("id=")
+                .append(id)
+                .append(", name='")
+                .append(name)
+                .append(", shape='")
+                .append(shape)
+                .append(", length=")
+                .append(length)
+                .append(", ean='")
+                .append(ean)
+                .append(", price=")
+                .append(price)
+                .append(", category=")
+                .append(category)
+                .append('}').toString();
     }
 }
-

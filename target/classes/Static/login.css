@@ -2,6 +2,7 @@
     width: 500px;
     margin: 20px auto;
     padding: 0;
+    text-align: center;
 }
 
 #login-form input {
@@ -30,4 +31,14 @@
     cursor: pointer;
     color: red;
     border: 2px solid black;
+}
+
+#info {
+    font-size: 26px;
+    color: red;
+    text-align: center;
+}
+
+#register-link {
+    font-size: 20px;
 }

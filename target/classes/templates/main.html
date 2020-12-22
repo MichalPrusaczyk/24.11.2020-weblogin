@@ -2,46 +2,36 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Warehouse</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-          crossorigin="anonymous"/>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/utilities.css">
-
+    <title>Metal Profiles</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/common-controls.css">
 </head>
 <body>
-<!--StoreNavbar-->
-<div th:replace="fragments.html :: store-navbar"></div>
-
-<!--Menu-->
+<div th:replace="fragments.html :: logo"></div>
 <div th:replace="fragments.html :: menu"></div>
 
 <div id="filter-form">
     <form method="post" action="/filter">
-        <input type="text" placeholder="filtruj" name="filter" th:value="${filter}">
+        <input type="text" placeholder="filter" name="filter" th:value="${filter}">
         <input type="submit" value="Filtruj">
     </form>
 </div>
 
 <div id="content">
     <th:block th:each="product : ${products}">
-        <div class="book">
+        <div class="product">
             <p th:text="${product.name}" class="product-name"></p>
             <p th:text="${product.shape}" class="product-shape"></p>
             <div class="product-info">
                 <span th:text="'Length: ' + ${product.length}"></span>
                 <span th:text="'EAN: ' + ${product.ean}"></span>
-                <span th:text="'Price: ' + ${product.price}"></span>
-                <a th:href="@{/addToBasket/{id}(id=${book.id})}" class="buy"></a>
-                <a th:if="${user.role.name() == 'ADMIN'}" th:href="@{/editBook/{id}(id=${book.id})}" class="edit"></a>
+                <span th:text="'Price: ' + ${product.length}"></span>
+                <a th:if="${product.length > 0}" th:href="@{/addToBasket/{id}(id=${product.id})}" class="buy"></a>
+                <a th:if="${product.length <= 0}" th:href="@{/addToBasket/{id}(id=${product.id})}" class="buy-blocked"></a>
+                <a th:if="${user.role.name() == 'ADMIN'}" th:href="@{/editProduct/{id}(id=${product.id})}" class="edit"></a>
             </div>
         </div>
     </th:block>
-
-<!--Footer-->
-<div th:replace="fragments.html :: footer"></div>
-
 </div>
 </body>
 </html>

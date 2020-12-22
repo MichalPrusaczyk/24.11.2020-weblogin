@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Super księgi</title>
+    <title>Metal Profiles</title>
     <link rel="stylesheet" href="/basket.css">
     <link rel="stylesheet" href="/common-controls.css">
 </head>
@@ -14,15 +14,17 @@
     <div class="basket-row">
         <div class="name">Name</div>
         <div class="length">Length</div>
-        <div class="price1">Price</div>
-        <div class="price2">Price2</div>
+        <div class="price1">Price for meter</div>
+        <div class="price2">Price</div>
+        <div class="remove-empty-space"></div>
     </div>
     <th:block th:each="product : ${products}">
         <div class="basket-row product">
-            <div class="name" th:text="${product.name}"></div>
-            <div class="length" th:text="${product.length}"></div>
+            <div class="title" th:text="${product.name}"></div>
+            <div class="pieces" th:text="${product.length}"></div>
             <div class="price1" th:text="${product.price}"></div>
             <div class="price2" th:text="${product.price * product.length}"></div>
+            <a th:href="@{/remove-product-from-basket/{id}(id=${product.id})}" class="remove-button"></a>
         </div>
     </th:block>
     <div class="basket-row">
@@ -30,7 +32,10 @@
         <div class="length"></div>
         <div class="price1">Suma</div>
         <div class="price2" th:text="${bill}"></div>
+        <div class="remove-empty-space"></div>
     </div>
+
+    <a th:if="${not #lists.isEmpty(products)}" href="/confirm-order" id="order-confirmation-button">Confirm order</a>
 </div>
 </body>
 </html>

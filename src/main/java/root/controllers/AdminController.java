@@ -3,19 +3,16 @@ package root.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import root.database.IProductRepository;
-import root.services.IProductService;
-import root.session.SessionObject;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import root.database.IProductRepository;
 import root.model.Product;
+import root.services.IProductService;
 import root.session.SessionObject;
 
 import javax.annotation.Resource;
-import java.awt.print.Book;
+import java.io.File;
+import java.io.IOException;
 
 @Controller
 public class AdminController {
@@ -33,26 +30,35 @@ public class AdminController {
         }
         model.addAttribute("user", this.sessionObject.getUser());
         model.addAttribute("info", this.sessionObject.getInfo());
-        model.addAttribute("book", new Product());
+        model.addAttribute("product", new Product());
         return "addProduct";
     }
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
-    public String addProduct(@ModelAttribute Product product) {
+    public String addProduct(@ModelAttribute Product product, @RequestParam MultipartFile obrazek) {
+        System.out.println(obrazek);
+        try {
+            String filePath = "F:\\JAVA\\MAVEN\\beztytulu.jpg";
+            obrazek.transferTo(new File(filePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         if(!this.sessionObject.isLogged()) {
             return "redirect:/login";
         }
         IProductService.AddProductResult result = this.productService.addProduct(product);
         if(result == IProductService.AddProductResult.LENGTH_ADDED) {
-            this.sessionObject.setInfo("Product added to store");
+            this.sessionObject.setInfo("Lenght increase");
         } else if(result == IProductService.AddProductResult.PRODUCT_ADDED) {
-            this.sessionObject.setInfo("New product");
+            this.sessionObject.setInfo("New product added");
         }
         return "redirect:/addProduct";
     }
 
     @RequestMapping(value = "/editProduct/{id}", method = RequestMethod.GET)
-    public String editBookPage(@PathVariable int id, Model model) {
+    public String editProductPage(@PathVariable int id, Model model) {
         Product product = this.productService.getProductById(id);
         model.addAttribute("product", product);
         model.addAttribute("user", this.sessionObject.getUser());

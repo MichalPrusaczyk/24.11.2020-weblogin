@@ -1,103 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.ogr">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
 </head>
 <body>
-
-<!--Navbar-->
-<div th:fragment="navbar">
-<div class="navbar">
-    <div class="container flex">
-        <h1 class="logo">Warehouse.</h1>
-        <nav>
-            <ul>
-                <li><a href="/addProduct">Add product</a></li>
-                <li><a href="/basket">Basket</a></li>
-                <li><a href="/logout">Logout</a></li>
-                <li><a href="/edit" th:text="${user.login}"></a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
+<div id="menu" th:fragment="menu">
+    <a href="/main">Strona główna</a>
+    <a href="/main?category=button1">Aluminum</a>
+    <a href="/main?category=button2">Steel</a>
+    <a href="/contact">Contact</a>
+    <a href="/logout">Logout</a>
+    <a href="/addProduct" th:if="${user.role.name() == 'ADMIN'}">Add Product</a>
+    <a href="/edit">My Account</a>
+    <a href="/basket">Basket</a>
+    <a href="/orders">Order</a>
 </div>
 
-<!--StoreNavbar-->
-<div th:fragment="store-navbar">
-    <div class="navbar">
-        <div class="container flex">
-            <h1 class="logo">Store.</h1>
-            <nav>
-                <ul>
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                    <!--<li><a href="/edit" th:text="${user.login}" ></a></li>-->
-                    <a href="/edit"><i class="fab fa-cog fa-2x"></i></a>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</div>
-
-<!--Menu(Store)-->
-<div th:fragment="menu">
-    <section class="showcase">
-        <div class="container">
-
-    <a href="/button1" class="btn btn-outline">Aluminium</a>
-    <a href="/button2" class="btn btn-outline">Steel</a>
-    <th:block th:each="product : ${products}">
-        <div class="showcase-text">
-            <h1 th:text="${product.name}" ></h1>
-            <p th:text="${product.shape}"></p>
-                <!--<span th:text="'length: '+ ${product.length}"></span>-->
-                <p th:text="${product.length+'mm'}"></p>
-                <span th:text="${product.size}"></span>
-        </div>
-    </th:block>
-        </div>
-    </section>
-</div>
-</div>
-
-<!--Showcase-->
-<div th:fragment="showcase">
-<section class="showcase">
-    <div class="container grid">
-        <div class="showcase-text">
-            <h1>Your store in one place</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro corporis sint magnam adipisci facilis
-                ea incidunt perspiciatis aliquam minima maiores, delectus ipsa suscipit asperiores aperiam eum!
-                Consectetur facere voluptatum est.</p>
-            <a href="/main" class="btn btn-outline">Open store</a>
-        </div>
-    </div>
-</section>
-</div>
-
-<!--Footer-->
-<div th:fragment="footer">
-<footer class="bg-dark py-5">
-    <div class="container grid grid-3">
-        <div>
-            <h1>Warehouse</h1>
-            <p>Copyright &copy; 2020</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/instruction.html">Instruction</a></li>
-            </ul>
-        </nav>
-        <div class="social">
-            <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-            <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-        </div>
-    </div>
-</footer>
-</div>
+<img src="/logo.png" alt="Logo" id="logo" th:fragment="logo">
 </body>
 </html>

@@ -2,17 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Warehouse</title>
+    <title>Super księgi</title>
     <link rel="stylesheet" href="/login.css">
     <link rel="stylesheet" href="/common-controls.css">
     <script src="loginValidator.js"></script>
-
 </head>
 <body>
+<div th:replace="fragments.html :: logo"></div>
 <form name="loginForm" id="login-form" method="post" onsubmit="return validate()">
+    <div th:if="${info != null}" th:text="${info}" id="info"></div>
     <input type="text" placeholder="login" class="text-input" th:field="*{userModel.login}" name="login">
-    <input type="password" placeholder="pass" class="text-input" th:field="*{userModel.pass}" name="pass">
-    <input type="submit" value="log in" id="form-submit">
+    <input type="password" placeholder="password" class="text-input" th:field="*{userModel.pass}" name="pass">
+    <input type="submit" value="Login" id="form-submit">
+    <a href="/register" id="register-link">Register</a>
 </form>
 </body>
 </html>

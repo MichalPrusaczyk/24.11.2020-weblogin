@@ -1,13 +1,16 @@
 package root.services.impl;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import root.dao.IProductDAO;
+import root.dao.IOrderDAO;
 import root.model.Product;
+import root.model.Order;
+import root.model.OrderPosition;
 import root.services.IBasketService;
 import root.session.SessionObject;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class BasketServiceImpl implements IBasketService {
@@ -39,5 +42,15 @@ public class BasketServiceImpl implements IBasketService {
             bill = bill + product.getPrice() * product.getLength();
         }
         return bill;
+    }
+
+    @Override
+    public void removeProductFromBasket(int productId) {
+        for(Product product : this.sessionObject.getBasket()) {
+            if(product.getId() == productId) {
+                this.sessionObject.getBasket().remove(product);
+                return;
+            }
+        }
     }
 }

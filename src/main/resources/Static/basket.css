@@ -24,10 +24,43 @@
 }
 
 .price1 {
-    width: 15%;
+    width: 12%;
     border-right: 1px solid black;
 }
 
 .price2 {
-    width: 15%;
+    width: 12%;
+}
+
+.remove-button {
+    width: 50px;
+    display: inline-block;
+    margin: 0px;
+    background-image: url("remove.png");
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: 50px;
+}
+
+.remove-empty-space {
+    width: 50px;
+    display: inline-block;
+    margin: 0px !important;
+    height: 50px;
+}
+
+#order-confirmation-button {
+    text-decoration: none;
+    margin: 20px 0;
+    border: 2px solid red;
+    color: black;
+    padding: 10px;
+    transition: color 0.5s, border 0.5s;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+#order-confirmation-button:hover {
+    color: red;
+    border: 2px solid black;
 }

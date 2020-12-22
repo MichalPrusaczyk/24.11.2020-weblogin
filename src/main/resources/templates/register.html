@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Metal Profiles</title>
+    <link rel="stylesheet" href="/register.css">
+    <link rel="stylesheet" href="/common-controls.css">
+</head>
+<body>
+<div th:replace="fragments.html :: logo"></div>
+<form method="post" id="register-form">
+    <div th:if="${info != null}" th:text="${info}" id="info"></div>
+    <input type="text" placeholder="Name" class="text-input" th:field="${registerModel.name}">
+    <input type="text" placeholder="Surname" class="text-input" th:field="${registerModel.surname}">
+    <input type="text" placeholder="Login" class="text-input" th:field="${registerModel.login}">
+    <input type="password" placeholder="Password" class="text-input" th:field="${registerModel.pass}">
+    <input type="password" placeholder="Repeat password" class="text-input" th:field="${registerModel.repeatedPass}">
+    <input type="submit" value="Register" id="form-submit">
+</form>
+</body>
+</html>

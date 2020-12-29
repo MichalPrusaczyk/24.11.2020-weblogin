@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.ogr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="menu" th:fragment="menu">
+    <a href="/main">Strona główna</a>
+    <a href="/main?category=button1">Aluminum</a>
+    <a href="/main?category=button2">Steel</a>
+    <a href="/contact">Contact</a>
+    <a href="/logout">Logout</a>
+    <a href="/addProduct" th:if="${user.role.name() == 'ADMIN'}">Add Product</a>
+    <a href="/edit">My Account</a>
+    <a href="/basket">Basket</a>
+    <a href="/orders">Order</a>
+</div>
+
+<!-- Footer -->
+<footer class="footer bg-dark py-5">
+    <div class="container grid grid-3">
+        <div>
+            <h1>Warehouse
+            </h1>
+            <p>Copyright &copy; 2020</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="docs.html">Docs</a></li>
+            </ul>
+        </nav>
+        <div class="social">
+            <a href="#"><i class="fab fa-github fa-2x"></i></a>
+            <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+            <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+        </div>
+    </div>
+</footer>
+
+<img src="/logo.ico" alt="Logo" id="logo" th:fragment="logo">
+</body>
+</html>

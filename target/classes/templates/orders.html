@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Super księgi</title>
+    <link rel="stylesheet" href="/orders.css">
+    <link rel="stylesheet" href="/common-controls.css">
+    <script src="order.js"></script>
+</head>
+<body>
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
+
+<div id="content">
+    <div id="orders-label">Your's order</div>
+    <th:block th:each="order : ${orders}">
+        <div class="order" th:onclick="|showOrderPositions('${order.id}')|" th:id="'order' + ${order.id}">
+            <div th:text="'Order status: ' + ${order.status}" class="order-state"></div>
+            <div class="positions-label">Pozycje:</div>
+            <th:block th:each="position : ${order.positions}">
+                <div class="position">
+                    <div th:text="${position.product.name}"></div>
+                    <div th:text="${position.length} + ' meters'"></div>
+                    <div th:text="${position.book.price} + ' pln'"></div>
+                </div>
+            </th:block>
+
+            <div th:text="'Quantity: ' + ${order.price} + ' pln'" class="total"></div>
+        </div>
+    </th:block>
+</div>
+</body>
+</html>

@@ -5,18 +5,27 @@
     <title>Metal Profiles</title>
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="/common-controls.css">
+    <link rel="stylesheet" href="/utilities.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div th:replace="fragments.html :: logo"></div>
+
+
+<!--Navbar-->
+<div th:replace="fragments.html :: navbar"></div>
+
+<!--Menu-->
 <div th:replace="fragments.html :: menu"></div>
 
+<!--Filter-->
 <div id="filter-form">
     <form method="post" action="/filter">
         <input type="text" placeholder="filter" name="filter" th:value="${filter}">
-        <input type="submit" value="Filtruj">
+        <input type="submit" value="Filter">
     </form>
 </div>
 
+<!--Product info-->
 <div id="content">
     <th:block th:each="product : ${products}">
         <div class="product">
@@ -33,5 +42,9 @@
         </div>
     </th:block>
 </div>
+
+<!--Footer-->
+<div th:replace="fragments.html :: footer"></div>
+
 </body>
 </html>

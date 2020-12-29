@@ -31,11 +31,11 @@ public class CommonController {
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main(Model model, @RequestParam(defaultValue = "none") String category) {
-        if(sessionObject.isLogged()) {
+        if (sessionObject.isLogged()) {
             List<Product> mainStoreProducts = this.productService.getProductsByCategoryWithFilter(category);
-            for(Product productFormMainStore : mainStoreProducts) {
-                for(Product productFormBasket : this.sessionObject.getBasket()) {
-                    if(productFormMainStore.getId() == productFormBasket.getId()) {
+            for (Product productFormMainStore : mainStoreProducts) {
+                for (Product productFormBasket : this.sessionObject.getBasket()) {
+                    if (productFormMainStore.getId() == productFormBasket.getId()) {
                         productFormMainStore.setLength(productFormMainStore.getLength() - productFormBasket.getLength());
                     }
                 }
@@ -51,7 +51,7 @@ public class CommonController {
 
     @RequestMapping(value = "/filter", method = RequestMethod.POST)
     public String filter(@RequestParam String filter) {
-        if(sessionObject.isLogged()) {
+        if (sessionObject.isLogged()) {
             this.sessionObject.setFilter(filter);
             return "redirect:/main";
         } else {
@@ -61,9 +61,19 @@ public class CommonController {
 
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public String contact(Model model) {
-        if(sessionObject.isLogged()) {
+        if (sessionObject.isLogged()) {
             model.addAttribute("user", this.sessionObject.getUser());
             return "contact";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String home(Model model) {
+        if (sessionObject.isLogged()) {
+            model.addAttribute("user", this.sessionObject.getUser());
+            return "home";
         } else {
             return "redirect:/login";
         }

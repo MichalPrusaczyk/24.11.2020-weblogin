@@ -1,18 +1,87 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.ogr">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<div id ="menu" th:fragment="menu">
-    <a href="/main">Home</a>
-    <a href="/button1">Button 1</a>
-    <a href="/button2">Button 2</a>
-    <a href="/contact">Contact</a>
-    <a href="/logout">Logout</a>
-    <a href="/edit" th:text="${user.login}"></a>
+
+<!-- Navbar -->
+<div id="navbar" th:fragment="navbar">
+    <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">Warehouse.</h1>
+            <nav>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
-<img src="logo.ico" alt="Logo" id="logo" th:fragment="logo">
+<!--MENU-->
+<div id="menu" th:fragment="menu">
+    <a href="/main?category=button1">Aluminum</a>
+    <a href="/main?category=button2">Steel</a>
+    <a href="/addProduct" th:if="${user.role.name() == 'ADMIN'}">Add Product</a>
+    <a href="/edit">My Account</a>
+    <a href="/basket">Basket</a>
+    <a href="/orders">Order</a>
+</div>
+
+<!-- Showcase -->
+<div id="showcase" th:fragment="showcase">
+    <section class="showcase">
+        <div class="container grid">
+            <div class="showcase-text">
+                <h1>Easier Deployment</h1>
+                <p>Deploy web apps of all kinds, from large scale enterprise APIs to static websites for individuals.
+                    Fill out the form to try a demo of our platform</p>
+                <a href="features.html" class="btn btn-outline">Read More</a>
+            </div>
+
+            <div class="showcase-form card">
+                <h2>Request a Demo</h2>
+                <form>
+                    <div class="form-control">
+                        <input type="text" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" name="company" placeholder="Company Name" required>
+                    </div>
+                    <div class="form-control">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <input type="submit" value="Send" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<div id="footer" th:fragment="footer">
+    <footer class="footer bg-dark py-5">
+        <div class="container grid grid-3">
+            <div>
+                <h1>Warehouse
+                </h1>
+                <p>Copyright &copy; 2020</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/main">Home</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</div>
+
+
+<img src="/logo.ico" alt="Logo" id="logo" th:fragment="logo">
 </body>
 </html>

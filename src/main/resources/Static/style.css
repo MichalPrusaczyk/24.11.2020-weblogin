@@ -141,7 +141,7 @@ pre {
   height: 5px;
   right: 0;
   left: 0;
-  background: var(--primary-color);
+  background: var(--dark-color);
   }
 .topbar {
   background-color: #fff;
@@ -170,7 +170,7 @@ pre {
 
 /* Navbar */
 .navbar {
-  background-color: var(--primary-color);
+  background-color: var(--dark-color);
   color: #fff;
   height: 70px;
 }
@@ -378,10 +378,9 @@ pre {
 
 /* Register */
 #register-form {
-    width: 500px;
-    margin: 20px auto;
     padding: 0;
     text-align: center;
+
 }
 
 #register-form input {

@@ -3,24 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Metal Profiles</title>
-    <link rel="stylesheet" href="/edit.css">
-    <link rel="stylesheet" href="/common-controls.css">
-    <script src="editProfileValidator.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/utilities.css">
 </head>
 <body>
-<div th:replace="fragments.html :: logo"></div>
-<div th:replace="fragments.html :: menu"></div>
+<div th:replace="fragments.html :: nav2"></div>
+
+<section class="logincase">
+    <div class="container grid">
+        <div class="logincase-text">
+            <h1>Change your personal data</h1>
+            <p>please fill all placeholders</p>
+
 <form id="edit-data-form" method="post" action="/changeData" name="dataForm" onsubmit="return validateData()">
     <input type="text" placeholder="Name" class="text-input" th:field="*{user.name}" name="name">
     <input type="text" placeholder="Surname" class="text-input" th:field="*{user.surname}" name="surname">
-    <input type="submit" value="OK" class="form-submit">
+    <input type="submit" value=" OK " class="form-submit">
 </form>
 <form id="change-pass-form" method="post" action="/changePass" name="passForm" onsubmit="return validatePass()">
     <div th:if="${info != null}" th:text="${info}" id="info"></div>
     <input type="password" placeholder="password" class="text-input" th:field="*{passModel.pass}" id="currentPass">
     <input type="password" placeholder="new password" class="text-input" th:field="*{passModel.newPass}" id="newPass">
     <input type="password" placeholder="repeat new password" class="text-input" th:field="*{passModel.repeatedNewPass}" id="newPass2">
-    <input type="submit" value="OK" class="form-submit">
+    <input type="submit" value=" OK " class="form-submit">
 </form>
+</div>
+    </div>
+</section>
+<div th:replace="fragments.html :: footer"></div>
 </body>
 </html>

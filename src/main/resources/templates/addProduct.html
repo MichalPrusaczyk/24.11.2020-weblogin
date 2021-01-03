@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Metal Profiles</title>
-    <link rel="stylesheet" href="/register.css">
-    <link rel="stylesheet" href="/common-controls.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/utilities.css">
 </head>
 <body>
-<div th:replace="fragments.html :: logo"></div>
-<div th:replace="fragments.html :: menu"></div>
+<div th:replace="fragments.html :: nav2"></div>
+
+<section class="logincase">
+    <div class="container grid">
+        <div class="logincase-text">
+            <h1>Add product</h1>
+            <p>please fill all placeholders</p>
+
 <form method="post" id="register-form" enctype="multipart/form-data">
     <div th:if="${info != null}" th:text="${info}" id="info"></div>
     <input type="text" placeholder="Name" class="text-input" th:field="${product.name}">
@@ -16,12 +25,15 @@
     <input type="text" placeholder="Length" class="text-input" th:field="${product.length}">
     <input type="text" placeholder="EAN" class="text-input" th:field="${product.ean}">
     <input type="text" placeholder="Price" class="text-input" th:field="${product.price}">
-    <input type="file" name="obrazek">
     <select th:field="${product.category}" class="text-input">
         <option value="BUTTON1">Aluminium</option>
         <option value="BUTTON2">Steel</option>
     </select>
     <input type="submit" value="Add" id="form-submit">
 </form>
+    </div>
+    </div>
+</section>
+<div th:replace="fragments.html :: footer"></div>
 </body>
 </html>

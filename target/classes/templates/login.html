@@ -2,13 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Super księgi</title>
-    <link rel="stylesheet" href="/login.css">
-    <link rel="stylesheet" href="/common-controls.css">
+    <title>Warehouse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/utilities.css">
     <script src="loginValidator.js"></script>
 </head>
 <body>
-<div th:replace="fragments.html :: logo"></div>
+<!-- nav -->
+<div>
+<nav class="nav bg-dark py-3">
+    <div class="container grid grid-2">
+        <div>
+            <h1>Warehouse</h1>
+        </div>
+    </div>
+</nav>
+</div>
+<!-- Logincase -->
+<section class="logincase">
+        <div class="container grid">
+            <div class="logincase-text">
+                <h1>Warehouse store</h1>
+                <p>Check our store</p>
+            </div>
+
 <form name="loginForm" id="login-form" method="post" onsubmit="return validate()">
     <div th:if="${info != null}" th:text="${info}" id="info"></div>
     <input type="text" placeholder="login" class="text-input" th:field="*{userModel.login}" name="login">
@@ -16,5 +36,19 @@
     <input type="submit" value="Login" id="form-submit">
     <a href="/register" id="register-link">Register</a>
 </form>
+        </div>
+</section>
+<!-- Footer -->
+<footer class="footer bg-dark py-5">
+    <div class="container grid grid-3">
+        <div class="social">
+            <a href="https://github.com/MichalPrusaczyk"><i class="fab fa-github fa-2x"></i></a>
+            <a href="https://www.behance.net/michalprusaczyk"><i class="fab fa-behance fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/prusaczykmichal"><i class="fab fa-linkedin fa-2x"></i></a>
+        </div>
+    </div>
+</footer>
+
+
 </body>
 </html>

@@ -16,7 +16,7 @@
     text-align: center;
 }
 
-#form-submit {
+#register-form-submit {
     color: black;
     width: 30%;
     margin: 15px auto;
@@ -27,7 +27,7 @@
     transition: color 1s, border 1s;
 }
 
-#form-submit:hover {
+#register-form-submit:hover {
     cursor: pointer;
     color: red;
     border: 2px solid black;

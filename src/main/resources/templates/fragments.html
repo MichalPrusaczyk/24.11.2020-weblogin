@@ -28,6 +28,13 @@
     <a href="/main?category=button2">Steel</a>
     <a href="/basket">Basket</a>
     <a href="/orders">Order</a>
+
+    <div id="filter-form">
+        <form method="post" action="/filter">
+            <input type="text" placeholder="search" name="filter" th:value="${filter}">
+            <input type="submit" value="Filter">
+        </form>
+    </div>
 </div>
 </div>
 
@@ -42,6 +49,18 @@
         </div>
     </div>
 </section>
+</div>
+<!-- Logincase -->
+<div id="logincase" th:fragment="logincase">
+    <section class="logincase">
+        <div class="container grid">
+            <div class="logincase-text">
+                <h1>Warehouse store</h1>
+                <p>Check our store</p>
+                <a href="/main" class="btn btn-outline">Store</a>
+            </div>
+        </div>
+    </section>
 </div>
 
 <!-- Contact -->

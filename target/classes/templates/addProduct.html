@@ -8,6 +8,7 @@
           crossorigin="anonymous" />
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/utilities.css">
+    <link rel="stylesheet" href="/common-controls.css">
 </head>
 <body>
 <div th:replace="fragments.html :: nav2"></div>
@@ -18,20 +19,21 @@
             <h1>Add product</h1>
             <p>please fill all placeholders</p>
 
-<form method="post" id="register-form" enctype="multipart/form-data">
-    <div th:if="${info != null}" th:text="${info}" id="info"></div>
-    <input type="text" placeholder="Name" class="text-input" th:field="${product.name}">
-    <input type="text" placeholder="Shape" class="text-input" th:field="${product.shape}">
-    <input type="text" placeholder="Length" class="text-input" th:field="${product.length}">
-    <input type="text" placeholder="EAN" class="text-input" th:field="${product.ean}">
-    <input type="text" placeholder="Price" class="text-input" th:field="${product.price}">
-    <select th:field="${product.category}" class="text-input">
-        <option value="BUTTON1">Aluminium</option>
-        <option value="BUTTON2">Steel</option>
-    </select>
-    <input type="submit" value="Add" id="form-submit">
-</form>
-    </div>
+            <form method="post" id="register-form" enctype="multipart/form-data">
+                <div th:if="${info != null}" th:text="${info}" id="info"></div>
+                <input type="text" placeholder="Name" class="text-input" th:field="${product.name}">
+                <input type="text" placeholder="Shape" class="text-input" th:field="${product.shape}">
+                <input type="text" placeholder="Length" class="text-input" th:field="${product.length}">
+                <input type="text" placeholder="EAN" class="text-input" th:field="${product.ean}">
+                <input type="text" placeholder="Price" class="text-input" th:field="${product.price}">
+                <input type="file" name="obrazek">
+                <select th:field="${product.category}" class="text-input">
+                    <option value="BUTTON1">Aluminium</option>
+                    <option value="BUTTON2">Steel</option>
+                </select>
+                <input type="submit" value="Add" id="form-submit">
+            </form>
+        </div>
     </div>
 </section>
 <div th:replace="fragments.html :: footer"></div>

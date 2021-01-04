@@ -3,39 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Metal Profiles</title>
-    <link rel="stylesheet" href="/basket.css">
-    <link rel="stylesheet" href="/common-controls.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/utilities.css">
 </head>
 <body>
-<div th:replace="fragments.html :: logo"></div>
-<div th:replace="fragments.html :: menu"></div>
+<div th:replace="fragments.html :: nav2"></div>
 
-<div id="content">
-    <div class="basket-row">
-        <div class="name">Name</div>
-        <div class="length">Length</div>
-        <div class="price1">Price for meter</div>
-        <div class="price2">Price</div>
-        <div class="remove-empty-space"></div>
-    </div>
+<!--<section class="logincase">-->
+<!--    <div class="container grid">-->
+<!--        <div class="logincase-text">-->
+<!--            <h1>Basket</h1>-->
+<!--            <p>please confirm</p>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--</section>-->
+<!--<div id="content">-->
+<!--    <div class="basket-row">-->
+<!--        <div class="name">Name</div>-->
+<!--        <div class="length">Length</div>-->
+<!--        <div class="price1">Price for meter</div>-->
+<!--        <div class="price2">Price</div>-->
+<!--        <div class="remove-empty-space"></div>-->
+<!--    </div>-->
+<div class="container">
     <th:block th:each="product : ${products}">
         <div class="basket-row product">
-            <div class="title" th:text="${product.name}"></div>
+            <div class="name">Name
+            <div class="title"  th:text="${product.name}"></div>
+            </div>
+            <div class="length">Length
             <div class="pieces" th:text="${product.length}"></div>
+            </div>
+            <div class="price1">Price for meter
             <div class="price1" th:text="${product.price}"></div>
+            </div>
+            <div class="price2">Cost
             <div class="price2" th:text="${product.price * product.length}"></div>
+            </div>
+
             <a th:href="@{/remove-product-from-basket/{id}(id=${product.id})}" class="remove-button"></a>
         </div>
+
     </th:block>
     <div class="basket-row">
         <div class="name"></div>
         <div class="length"></div>
-        <div class="price1">Suma</div>
+        <div class="price1"></div>
+        <div class="price3">Total</div>
         <div class="price2" th:text="${bill}"></div>
         <div class="remove-empty-space"></div>
-    </div>
 
-    <a th:if="${not #lists.isEmpty(products)}" href="/confirm-order" id="order-confirmation-button">Confirm order</a>
+        <a th:if="${not #lists.isEmpty(products)}" href="/confirm-order" id="order-confirmation-button">Confirm order</a>
+
+    </div>
 </div>
+
+
+<div th:replace="fragments.html :: footer"></div>
 </body>
 </html>

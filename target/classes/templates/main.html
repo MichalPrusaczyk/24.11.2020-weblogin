@@ -25,9 +25,9 @@
             <p th:text="${product.name}" class="product-name"></p>
             <p th:text="${product.shape}" class="product-shape"></p>
             <div class="product-info">
-                <span th:text="'Length: ' + ${product.length}"></span>
+                <span th:text="'Stock: ' + ${product.length}"></span>
                 <span th:text="'EAN: ' + ${product.ean}"></span>
-                <span th:text="'Price: ' + ${product.length}"></span>
+                <span th:text="'Price: ' + ${product.price}"></span>
                 <a th:if="${product.length > 0}" th:href="@{/addToBasket/{id}(id=${product.id})}" class="buy"></a>
                 <a th:if="${product.length <= 0}" th:href="@{/addToBasket/{id}(id=${product.id})}" class="buy-blocked"></a>
                 <a th:if="${user.role.name() == 'ADMIN'}" th:href="@{/editProduct/{id}(id=${product.id})}" class="edit"></a>

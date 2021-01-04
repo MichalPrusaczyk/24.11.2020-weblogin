@@ -22,12 +22,12 @@
 </nav>
 </div>
 <!-- Logincase -->
-<section class="logincase">
+<section class="logincase1">
         <div class="container grid">
-            <div class="logincase-text">
+            <div class="logincase1-text">
                 <h1>Warehouse store</h1>
                 <p>Check our store</p>
-            </div>
+
 
 <form name="loginForm" id="login-form" method="post" onsubmit="return validate()">
     <div th:if="${info != null}" th:text="${info}" id="info"></div>
@@ -36,6 +36,7 @@
     <input type="submit" value="Login" id="form-submit">
     <a href="/register" id="register-link">Register</a>
 </form>
+        </div>
         </div>
 </section>
 <!-- Footer -->

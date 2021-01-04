@@ -172,7 +172,7 @@ pre {
 .navbar {
   background-color: var(--dark-color);
   color: #fff;
-  height: 70px;
+  height: 100px;
 }
 
 .navbar ul {
@@ -197,7 +197,7 @@ pre {
 
 /* Showcase */
 .showcase {
-  height: 400px;
+  height: 950px;
   background-color: var(--primary-color);
   color: #fff;
   position: relative;
@@ -259,9 +259,9 @@ pre {
   background: #fff;
 }
 
-/* Logincase */
+/* Ordercase based on logincase*/
 .logincase {
-  height: 800px;
+  height: auto;
   background-color: var(--primary-color);
   color: #fff;
   position: relative;
@@ -296,7 +296,7 @@ pre {
   animation: slideInFromRight 1s ease-in;
 }
 
-.logincasee-form .form-control {
+.logincase-form .form-control {
   margin: 30px 0;
 }
 
@@ -315,6 +315,70 @@ pre {
 
 .logincase::before,
 .logincase::after {
+  content: '';
+  position: absolute;
+  height: 5px;
+  right: 0;
+  left: 0;
+  background: #fff;
+}
+
+/* Logincase from login page*/
+.logincase1 {
+  height: 950px;
+  background-color: var(--primary-color);
+  color: #fff;
+  position: relative;
+}
+
+.logincase1 h1 {
+  font-size: 40px;
+}
+
+.logincase1 p {
+  margin: 20px 0;
+}
+
+.logincase1 .grid {
+  overflow: visible;
+  grid-template-columns: 55% auto;
+  gap: 30px;
+}
+
+.logincase1-text {
+  animation: slideInFromLeft 1s ease-in;
+}
+
+.logincase1-form {
+  position: align;
+  top: 60px;
+  height: 350px;
+  width: 400px;
+  padding: 40px;
+  z-index: 100;
+  justify-self: flex-end;
+  animation: slideInFromRight 1s ease-in;
+}
+
+.logincase1-form .form-control {
+  margin: 30px 0;
+}
+
+.logincase1-form input[type='text'],
+.logincase1-form input[type='email'] {
+  border: 0;
+  border-bottom: 1px solid #b4becb;
+  width: 100%;
+  padding: 3px;
+  font-size: 16px;
+}
+
+.logincase1-form input:focus {
+  outline: none;
+}
+
+.logincase1::before,
+.logincase1::after {
   content: '';
   position: absolute;
   height: 5px;
@@ -421,6 +485,114 @@ pre {
     font-size: 26px;
     color: red;
     text-align: center;
+}
+
+/* Order */
+
+#orders-label {
+    font-size: 26px;
+    text-align: center;
+    margin-top: 30px;
+}
+.order {
+       width: fit-content;
+       margin: 20px auto;
+       background-color: #242424;
+       cursor: pointer;
+       transition: background 0.2s;
+}
+
+.order:hover {
+    background: rgba(219, 20, 20, 0.2);
+}
+
+.order-state {
+    padding: 15px 0 0 70px;
+    font-size: 20px;
+}
+
+.positions-label {
+    padding: 5px 0 0 70px;
+    font-size: 20px;
+}
+
+.position {
+    padding 5px 0 0 70px;
+    font-size: 20px;
+    display: none;
+}
+
+.position div {
+    display: inline-block;
+    margin: 5px 20px;
+}
+
+.total {
+        padding: 5px 120px;
+        font-size: 20px;
+}
+/* Basket */
+#content {
+    margin: 50px 200px 15px 200px;
+    text-align: center;
+}
+
+.product {
+    border-top: 1px solid black;
+}
+
+.basket-row div {
+    display: inline-block;
+    font-size: 26px;
+    margin: 10px;
+}
+
+.name {
+    border-right: 1px solid black;
+}
+
+.length {
+    border-right: 1px solid black;
+}
+
+.price1 {
+    border-right: 1px solid black;
+}
+
+.price2 {
+}
+
+.remove-button {
+    width: 50px;
+    display: inline-block;
+    margin: 0px;
+    background-image: url("remove.png");
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: 50px;
+}
+
+.remove-empty-space {
+    width: 50px;
+    display: inline-block;
+    margin: 0px !important;
+    height: 50px;
+}
+
+#order-confirmation-button {
+    text-decoration: none;
+    margin: 20px 0;
+    border: 2px solid red;
+    color: black;
+    padding: 10px;
+    transition: color 0.5s, border 0.5s;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+#order-confirmation-button:hover {
+    color: red;
+    border: 2px solid black;
 }
 
 /* Footer */
